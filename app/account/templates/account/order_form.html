@@ -1,9 +1,19 @@
 {% extends "account/main.html" %}
 {%load static %}
 {% block content %}
-    <form action = "" method = "POST">
-        {% csrf_token%}
-        {{form}}
-        <input type = "submit" name = "submit">
-    </form>
+<div class ="row">
+    <div class = "col-md-6">
+        <div calss="card card-body">
+            <form action = "" method = "POST">
+                {% csrf_token%} 
+                {{formset.management_form}}
+                {% for form in formset%}
+                    {{form}}
+                    <hr>
+                {% endfor %}
+                <input type = "submit" name = "submit">
+            </form>
+        </div>
+    </div>
+</div>
 {%endblock%}

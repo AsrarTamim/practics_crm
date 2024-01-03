@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account'
+    'account.apps.AccountConfig',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -80,12 +81,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),   
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'DEMO_TEST',
+        'USER': 'postgres',
+        'PASSWORD': 'okiamfine',
+        'HOST': 'localhost',   
+        'PORT': '5432',
     }
 }
 
@@ -125,11 +126,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/images/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-MEDIA_URL = '/images/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'static/images')
+
+#SMTP Configurtion
+
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER="jessyaura55@gmail.com"
+EMAIL_HOST_PASSWORD="yezg jivz nygg tniq"
